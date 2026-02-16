@@ -143,6 +143,22 @@
             background-color: #2e4fcf;
         }
 
+        /* Провокационная кнопка (маленькая, прозрачная) */
+        .btn-troll {
+            display: inline-block;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--text-secondary);
+            margin-top: 16px;
+            transition: 0.2s;
+        }
+
+        .btn-troll:hover {
+            color: var(--accent-orange);
+            border-bottom-color: var(--accent-orange);
+        }
+
         /* Сетка и карточки */
         .grid-2 {
             display: grid;
@@ -236,8 +252,8 @@
             font-size: 1.1rem;
         }
 
-        /* Форма */
-        .form-section {
+        /* Блок призыва (вместо формы) */
+        .cta-section {
             background-color: var(--bg-card);
             border-radius: var(--border-radius);
             padding: 40px;
@@ -245,32 +261,12 @@
             margin: 40px 0;
         }
 
-        .form-group {
+        .cta-buttons {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             gap: 16px;
             margin-top: 24px;
-        }
-
-        .form-group input {
-            flex: 1 1 250px;
-            padding: 16px 20px;
-            border: none;
-            border-radius: 60px;
-            background-color: #333;
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 500;
-            outline: none;
-        }
-
-        .form-group input::placeholder {
-            color: #888;
-        }
-
-        .form-group input:focus {
-            background-color: #3a3a3a;
         }
 
         /* Разделители */
@@ -320,7 +316,7 @@
 
         <!-- БЛОК 0: Главный экран -->
         <section class="section" style="padding-top: 20px;">
-            <h1>Ты уже умеешь генерить картинки. А сможешь продать это умение?</h1>
+            <h1>Ты уже умеешь генерить картинки. А продать это умение?</h1>
             <p class="subhead">Хватит просто клацать. Научись использовать ИИ как инструмент для денег и своих проектов.</p>
             
             <!-- Кейс Глеба -->
@@ -331,7 +327,15 @@
                 </div>
             </div>
 
-            <a href="#form" class="btn">Хочу так же</a>
+            <!-- Две кнопки: основная и провокационная -->
+            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">
+                <a href="https://t.me/TagirFeo?text=Хочу%20узнать%20про%20интенсив" class="btn" target="_blank" rel="noopener noreferrer">
+                    Получить предложение 
+                </a>
+                <a href="https://example.com" class="btn-troll" target="_blank" rel="noopener noreferrer">
+                    Нет, я лучше дальше картинки генерить буду
+                </a>
+            </div>
         </section>
 
         <!-- БЛОК 1: В чём ловушка -->
@@ -340,7 +344,7 @@
             <div class="grid-2">
                 <div class="card">
                     <h3>Кнопки вместо мозгов</h3>
-                    <p>Большинство курсов учат «напиши промт — получи картинку». Поигрался неделю — и упёрся в стену. Продать не можешь, идеи не работают.</p>
+                    <p>Большинство курсов учат «напиши промт — получи картинку». Поигрался неделю — и в стену. Продать не можешь, идеи не работают.</p>
                 </div>
                 <div class="card">
                     <h3>Проект ради проекта</h3>
@@ -407,10 +411,10 @@
             <div class="card" style="display: flex; flex-direction: column; gap: 20px;">
                 <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
                     <span style="background: var(--accent-blue); padding: 10px 20px; border-radius: 40px; font-weight: 700;">4 недели</span>
-                    <span style="background: var(--bg-dark); padding: 10px 20px; border-radius: 40px;">1 встреча в неделю (60-90 мин)</span>
+                    <span style="background: var(--bg-dark); padding: 10px 20px; border-radius: 40px;">1 встреча в неделю (1,5 - 2 часа)</span>
                     <span style="background: var(--bg-dark); padding: 10px 20px; border-radius: 40px;">домашка на 1-2 ч в неделю</span>
                 </div>
-                <p>Это мастерская. Здесь ошибки — не «2», а материал для роста. Маленькая группа, живые созвоны.</p>
+                <p>Это мастерская. Здесь ошибки —  материал для роста, а не «2». Маленькая группа, живые созвоны.</p>
             </div>
         </section>
 
@@ -435,23 +439,25 @@
             </div>
         </section>
 
-        <!-- БЛОК 8: Призыв к действию + форма -->
-        <section class="form-section" id="form">
+        <!-- БЛОК 8: Призыв к действию (без формы, только кнопки) -->
+        <section class="cta-section" id="cta">
             <h2 style="margin-bottom: 8px;">Хочешь так же?</h2>
-            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Оставь контакт — я пришлю подробности первого набора (сколько стоит, где и когда). Никакого спама.</p>
-            <form action="#" method="post" class="form-group">
-                <input type="text" name="name" placeholder="Твоё имя" required>
-                <input type="text" name="contact" placeholder="Телефон / Telegram" required>
-                <button type="submit" class="btn btn-blue">Записаться</button>
-            </form>
-            <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">Нажимая, ты соглашаешься на обработку данных</p>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Напиши мне в Telegram — пришлю подробности первого набора (сколько стоит, где и когда). Никакого спама.</p>
+            <div class="cta-buttons">
+                <a href="https://t.me/TagirFeo?text=Хочу%20узнать%20про%20интенсив" class="btn" target="_blank" rel="noopener noreferrer">
+                    Получить предложение ✈️
+                </a>
+                <a href="https://www.tiktok.com/" class="btn-troll" target="_blank" rel="noopener noreferrer">
+                    Нет, я лучше дальше картинки генерить буду
+                </a>
+            </div>
         </section>
 
         <hr>
 
         <!-- Футер -->
         <div class="footer">
-            © 2026 — ИИ-интенсив для студентов техникума
+            © 2026 — ИИ-интенсив для студентов
         </div>
     </div>
 </body>
